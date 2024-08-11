@@ -18,7 +18,7 @@ Deno.test("Template Test", async (t) =>
 	
 	await t.step("Creating an element", () =>
 	{
-		elements.card = { pieces: compile(cardInput, elements), script: ["#"], style: ["#"] };
+		elements.card = { pieces: compile(cardInput, elements), scripts: ["#"], styles: ["#"] };
 
 		assertEquals(elements.card.pieces, cardExpected);
 	});

@@ -2,6 +2,11 @@ import { PieceType, Piece, KeyValue } from "./types.ts";
 
 const IF = "if", END_IF = "endif", SPACE = ' ';
 
+/**
+ * Do the rendering of an compiled template, replacing the variables set.
+ * @param page The template.
+ * @param args The variables, as key-value.
+ */
 export function render(page: Piece[], args: KeyValue) : string
 {
 	let output = "";

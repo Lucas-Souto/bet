@@ -9,8 +9,8 @@ const IMPORT_TAG = "import";
 const IMPORT_ELEMENT =
 {
 	pieces:[{ type: PieceType.text, value: "" }],
-	script: [],
-	style: []
+	scripts: [],
+	styles: []
 };
 
 function ensureVal(input: string, index: number, values: string[]) : boolean
@@ -136,6 +136,11 @@ function formatCSS(css: string) { return `<link rel="stylesheet" href="${css}" /
 
 function formatJS(js: string) { return `<script rel="text/javascript" src="${js}" defer></script>`; }
 
+/**
+ * Compiles a HTML input, replacing custom elements.
+ * @param input The plain HTML.
+ * @param elements A collection of elements to be used as replacement source.
+ */
 export function compile(input: string, elements: ElementCollection) : Piece[]
 {
 	const result = [];
@@ -195,14 +200,14 @@ export function compile(input: string, elements: ElementCollection) : Piece[]
 				{
 					tags.push(tag);
 					
-					for (const js of element.script)
+					for (const js of element.scripts)
 					{
 						tempImport = formatJS(js);
 
 						if (imports.indexOf(tempImport) === -1) imports += tempImport;
 					}
 
-					for (const css of element.style)
+					for (const css of element.styles)
 					{
 						tempImport = formatCSS(css);
 
