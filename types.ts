@@ -25,5 +25,5 @@ export type ElementCollection =
 
 export type KeyValue =
 {
-	[dict_key: string]: string;
+	[dict_key: string]: any;
 };

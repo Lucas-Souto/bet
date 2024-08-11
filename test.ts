@@ -29,7 +29,7 @@ Deno.test("Template Test", async (t) =>
 
 	await t.step("Rendering a template", () =>
 	{
-		assertEquals(render(compile(pageInput, elements), { show: "1" }), expectedRender1);
-		assertEquals(render(compile(pageInput, elements), { show: "0" }), expectedRender2);
+		assertEquals(render(compile(pageInput, elements), { show: true }), expectedRender1);
+		assertEquals(render(compile(pageInput, elements), { show: false }), expectedRender2);
 	});
 });

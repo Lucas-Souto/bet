@@ -1,7 +1,6 @@
 import { PieceType, Piece, KeyValue } from "./types.ts";
 
-const IF = "if", END_IF = "endif", SPACE = ' ',
-	TRUE = "1";
+const IF = "if", END_IF = "endif", SPACE = ' ';
 
 export function render(page: Piece[], args: KeyValue) : string
 {
@@ -29,7 +28,7 @@ export function render(page: Piece[], args: KeyValue) : string
 					
 					if (split[0] === IF)
 					{
-						if (split.length > 1) show.push(showCurrent && args[split[1]] === TRUE);
+						if (split.length > 1) show.push(showCurrent && args[split[1]]);
 						else show.push(showCurrent);
 					}
 				}
