@@ -144,7 +144,7 @@ export function compile(input: string, elements: ElementCollection) : Piece[]
 	let notLast = true;
 	const tags = [];
 	let importIndex = -1;
-	let imports = "";
+	let imports = "", tempImport = null;
 
 	if (elements[IMPORT_TAG] === undefined) elements[IMPORT_TAG] = IMPORT_ELEMENT;
 
@@ -195,9 +195,19 @@ export function compile(input: string, elements: ElementCollection) : Piece[]
 				{
 					tags.push(tag);
 					
-					for (const js of element.script) imports += formatJS(js);
+					for (const js of element.script)
+					{
+						tempImport = formatJS(js);
 
-					for (const css of element.style) imports += formatCSS(css);
+						if (imports.indexOf(tempImport) === -1) imports += tempImport;
+					}
+
+					for (const css of element.style)
+					{
+						tempImport = formatCSS(css);
+
+						if (imports.indexOf(tempImport) === -1) imports += tempImport;
+					}
 				}
 			}
 			else
