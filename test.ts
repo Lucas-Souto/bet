@@ -33,3 +33,11 @@ Deno.test("Template Test", async (t) =>
 		assertEquals(render(compile(pageInput, elements), { show: false }), expectedRender2);
 	});
 });
+
+Deno.test("Special characters", () =>
+{
+	const input = "\\$<br>\\\\";
+	const expected = "$<br>\\";
+
+	assertEquals(render(compile(input, {}), {}), expected);
+});
