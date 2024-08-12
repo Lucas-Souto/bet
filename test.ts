@@ -1,6 +1,9 @@
-import { PieceType, Piece, Element, ElementCollection } from "./types.ts";
-import { compile } from "./parser.ts";
-import { render } from "./renderer.ts";
+import
+{
+	PieceType, Piece, Element, ElementCollection,
+	compile,
+	render
+} from "./mod.ts";
 import { assertEquals } from "jsr:@std/assert@1";
 
 Deno.test("Template Test", async (t) =>
